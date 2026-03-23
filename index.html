@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Seminar Surveys</title>
+
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: #f5f5f5;
+      text-align: center;
+    }
+
+    h1 {
+      padding: 15px;
+      background: #111;
+      color: white;
+      margin: 0;
+      font-size: 20px;
+    }
+
+    .container {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 15px;
+      padding: 15px;
+    }
+
+    .card {
+      background: white;
+      border-radius: 12px;
+      padding: 15px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    }
+
+    .card h2 {
+      margin: 10px 0;
+      font-size: 18px;
+    }
+
+    .card img {
+      width: 140px;
+      height: 140px;
+      object-fit: contain;
+    }
+
+    .btn {
+      display: inline-block;
+      margin-top: 10px;
+      padding: 10px 15px;
+      background: #007bff;
+      color: white;
+      text-decoration: none;
+      border-radius: 8px;
+      font-size: 14px;
+    }
+
+    .btn:hover {
+      background: #0056b3;
+    }
+
+    .note {
+      font-size: 12px;
+      color: #555;
+      margin-top: 5px;
+    }
+
+    @media (min-width: 600px) {
+      .container {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+<h1>Seminar Surveys & Quizzes</h1>
+
+<div class="container">
+
+  <!-- Welcome Question -->
+  <div class="card">
+    <h2>Welcome Question</h2>
+    <img src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://example.com/welcome" />
+    <br>
+    <a class="btn" href="https://example.com/welcome">Open Survey</a>
+    <div class="note">Return here after submission</div>
+  </div>
+
+  <!-- Market Opinion -->
+  <div class="card">
+    <h2>Market Opinion</h2>
+    <img src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://example.com/market" />
+    <br>
+    <a class="btn" href="https://example.com/market">Open Survey</a>
+    <div class="note">Return here after submission</div>
+  </div>
+
+  <!-- LOC Assessment -->
+  <div class="card">
+    <h2>LOC Assessment</h2>
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAA..." />
+    <br>
+    <a class="btn" href="https://forms.gle/WTq9KjrdqRs1xvJi8">Open Survey</a>
+    <div class="note">Return here after submission</div>
+  </div>
+
+  <!-- RIASEC Assessment -->
+  <div class="card">
+    <h2>RIASEC Assessment</h2>
+    <img src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://forms.gle/bnu4p7oix948t8Nt8" />
+    <br>
+    <a class="btn" href="https://forms.gle/bnu4p7oix948t8Nt8">Open Survey</a>
+    <div class="note">Return here after submission</div>
+  </div>
+
+</div>
+
+</body>
+</html>
