@@ -3,19 +3,26 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>ICAI Career Laab</title>
+  <title>Seminar Surveys</title>
 
   <style>
+    :root {
+      --primary: #F98B31;
+      --secondary: #C62828;
+      --accent: #1E3A8A;
+      --bg: #FFF7ED;
+    }
+
     body {
       margin: 0;
-      font-family: Arial, sans-serif;
-      background: #f5f5f5;
+      font-family: 'Segoe UI', sans-serif;
+      background: var(--bg);
       text-align: center;
     }
 
     h1 {
-      padding: 15px;
-      background: #111;
+      padding: 16px;
+      background: var(--primary);
       color: white;
       margin: 0;
       font-size: 20px;
@@ -24,43 +31,81 @@
     .container {
       display: grid;
       grid-template-columns: 1fr;
-      gap: 15px;
-      padding: 15px;
+      gap: 18px;
+      padding: 18px;
     }
 
     .card {
+      border-radius: 16px;
+      padding: 18px 15px;
       background: white;
-      border-radius: 12px;
-      padding: 15px;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+      border: 2px solid var(--accent);
+      box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+      position: relative;
+    }
+
+    .card.locked {
+      opacity: 0.5;
+    }
+
+    .card.completed {
+      border-color: green;
     }
 
     .card h2 {
-      margin: 10px 0;
       font-size: 16px;
+      margin-bottom: 12px;
+      color: var(--secondary);
     }
 
-    .card img {
+    .qr-box {
+      background: #fff;
+      padding: 10px;
+      border-radius: 12px;
+      display: inline-block;
+      border: 2px solid var(--primary);
+    }
+
+    .qr-box img {
       width: 140px;
       height: 140px;
-      object-fit: contain;
     }
 
     .btn {
       display: inline-block;
       margin-top: 10px;
-      padding: 10px 15px;
-      background: #007bff;
+      padding: 10px 16px;
+      background: var(--secondary);
       color: white;
       text-decoration: none;
       border-radius: 8px;
+      font-weight: 600;
       font-size: 14px;
+    }
+
+    .complete-btn {
+      display: block;
+      margin: 8px auto 0;
+      padding: 6px 10px;
+      font-size: 12px;
+      background: var(--accent);
+      color: white;
+      border-radius: 6px;
+      cursor: pointer;
+      width: fit-content;
     }
 
     .note {
       font-size: 12px;
+      margin-top: 6px;
       color: #555;
-      margin-top: 5px;
+    }
+
+    .status {
+      position: absolute;
+      top: 10px;
+      right: 12px;
+      font-size: 18px;
     }
 
     @media (min-width: 600px) {
@@ -77,43 +122,76 @@
 
 <div class="container">
 
-  <!-- Career Orientation -->
-  <div class="card">
-    <h2>Career orientation - Self assessment Quiz</h2>
-    <img src="https://raw.githubusercontent.com/anjaniiaces/ICAI28march/main/careerorientation.jpeg" />
-    <br>
+  <div class="card" id="card1">
+    <div class="status" id="status1"></div>
+    <h2>Career Orientation - Self Assessment Quiz</h2>
+    <div class="qr-box">
+      <img src="https://raw.githubusercontent.com/anjaniiaces/ICAI28march/main/careerorientation.jpeg">
+    </div><br>
     <a class="btn" href="https://forms.cloud.microsoft/r/2cRrMY10Yz">Open Quiz</a>
-    <div class="note">Return here after submission</div>
+    <div class="complete-btn" onclick="markDone(1)">Mark as Done</div>
+    <div class="note">Complete and return</div>
   </div>
 
-  <!-- What Matters Most -->
-  <div class="card">
-    <h2>What matters Most in your First Job</h2>
-    <img src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://forms.cloud.microsoft/r/1DE4PGx154" />
-    <br>
+  <div class="card locked" id="card2">
+    <div class="status" id="status2"></div>
+    <h2>What Matters Most in Your First Job</h2>
+    <div class="qr-box">
+      <img src="https://raw.githubusercontent.com/anjaniiaces/ICAI28march/main/whatmattersmostinyourfirstjob.jpeg">
+    </div><br>
     <a class="btn" href="https://forms.cloud.microsoft/r/1DE4PGx154">Open Survey</a>
-    <div class="note">Return here after submission</div>
+    <div class="complete-btn" onclick="markDone(2)">Mark as Done</div>
+    <div class="note">Unlocks after previous</div>
   </div>
 
-  <!-- LOC Assessment -->
-  <div class="card">
+  <div class="card locked" id="card3">
+    <div class="status" id="status3"></div>
     <h2>LOC Assessment</h2>
-    <img src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://forms.gle/WTq9KjrdqRs1xvJi8" />
-    <br>
+    <div class="qr-box">
+      <img src="https://raw.githubusercontent.com/anjaniiaces/ICAI28march/main/locusofcontrol.png">
+    </div><br>
     <a class="btn" href="https://forms.gle/WTq9KjrdqRs1xvJi8">Open Survey</a>
-    <div class="note">Return here after submission</div>
+    <div class="complete-btn" onclick="markDone(3)">Mark as Done</div>
   </div>
 
-  <!-- RIASEC Assessment -->
-  <div class="card">
+  <div class="card locked" id="card4">
+    <div class="status" id="status4"></div>
     <h2>RIASEC Assessment</h2>
-    <img src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://forms.gle/bnu4p7oix948t8Nt8" />
-    <br>
+    <div class="qr-box">
+      <img src="https://raw.githubusercontent.com/anjaniiaces/ICAI28march/main/riasecassessment.jpeg">
+    </div><br>
     <a class="btn" href="https://forms.gle/bnu4p7oix948t8Nt8">Open Survey</a>
-    <div class="note">Return here after submission</div>
+    <div class="complete-btn" onclick="markDone(4)">Mark as Done</div>
   </div>
 
 </div>
+
+<script>
+  const total = 4;
+
+  function markDone(n) {
+    localStorage.setItem("done" + n, "true");
+    updateUI();
+  }
+
+  function updateUI() {
+    for (let i = 1; i <= total; i++) {
+      const card = document.getElementById("card" + i);
+      const status = document.getElementById("status" + i);
+
+      if (localStorage.getItem("done" + i)) {
+        card.classList.add("completed");
+        status.innerHTML = "✅";
+
+        if (i < total) {
+          document.getElementById("card" + (i + 1)).classList.remove("locked");
+        }
+      }
+    }
+  }
+
+  updateUI();
+</script>
 
 </body>
 </html>
